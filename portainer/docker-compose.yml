@@ -1,0 +1,21 @@
+version: '3'
+services:
+  portainer:
+    ports:
+      - "9000:9000"
+    image: portainer/portainer
+    networks:
+      - swarm-network
+    deploy:
+      replicas: 1
+      placement:
+        constraints: [node.role == manager]
+      restart_policy:
+        condition: on-failure
+    volumes:
+      - type: bind
+        source: //var/run/docker.sock
+        target: /var/run/docker.sock
+      - type: bind
+        source: //media/DockerFastShare/portainer/data
+        target: /data
