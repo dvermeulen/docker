@@ -1,0 +1,11 @@
+version: '3'
+services:
+  registry:
+    image: registry:2
+    deploy:
+      replicas: 1
+      restart_policy: always
+    volumes:
+      - "/media/DockerSlowShare/registry/data:/var/lib/registry"
+    ports:
+      - "5000:5000"
