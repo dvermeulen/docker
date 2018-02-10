@@ -13,3 +13,8 @@ services:
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
       - "/media/DockerFastShare/portainer/data:/data"
+    networks:
+      - portainer
+
+networks:
+  portainer:
