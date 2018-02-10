@@ -4,7 +4,7 @@ services:
   postgres:
     image: postgres
     volumes:
-      - "/media/DockerSlowStore/taiga/db:/var/lib/postgresql/data"
+      - "/media/DockerSlowShare/taiga/db:/var/lib/postgresql/data"
     deploy:
       replicas: 1
     environment:
@@ -65,8 +65,8 @@ services:
     deploy:
       replicas: 1
     volumes:
-      - "/media/DockerSlowStore/taiga/media:/usr/src/taiga-back/media"
-      - "/media/DockerSlowStore/taiga/config:/taiga"
+      - "/media/DockerSlowShare/taiga/media:/usr/src/taiga-back/media"
+      - "/media/DockerSlowShare/taiga/config:/taiga"
 
 networks:
   back:
