@@ -1,39 +1,38 @@
 version: "3"
 services:
 
-  redis:
-    image: redis:3
-    deploy:
-      replicas: 1
-    networks:
-      - back
-
-  rabbit:
-    image: rabbitmq:3
-    hostname: rabbit
-    deploy:
-      replicas: 1
-    networks:
-      - back
-
-  celery:
-    image: celery
-    deploy:
-      replicas: 1
-    networks:
-      - back
-
-  events:
-    image: registry.dezdez.com.au/taiga-events
-    deploy:
-      replicas: 1
-    networks:
-      - back
+  #  redis:
+  #    image: redis:3
+  #    deploy:
+  #      replicas: 1
+  #    networks:
+  #      - back
+  #
+  #  rabbit:
+  #    image: rabbitmq:3
+  #    hostname: rabbit
+  #    deploy:
+  #      replicas: 1
+  #    networks:
+  #      - back
+  #
+  #  celery:
+  #    image: celery
+  #    deploy:
+  #      replicas: 1
+  #    networks:
+  #      - back
+  #
+  #  events:
+  #    image: registry.dezdez.com.au/taiga-events
+  #    deploy:
+  #      replicas: 1
+  #    networks:
+  #      - back
 
   taiga:
     image: registry.dezdez.com.au/taiga
     networks:
-      - back
       - front
     deploy:
       replicas: 1
@@ -54,5 +53,4 @@ services:
       - "/media/DockerSlowShare/taiga/config:/taiga"
 
 networks:
-  back:
   front:
