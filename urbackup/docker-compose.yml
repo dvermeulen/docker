@@ -10,12 +10,8 @@ services:
     ports:
       - "55413-55415:55413-55415"
       - "35623:35623/udp"
-    networks:
-      - urbackup
     restart: unless-stopped
-
-networks:
-  urbackup:
+    network_mode: "bridge"
 
 volumes:
   db-vol:
