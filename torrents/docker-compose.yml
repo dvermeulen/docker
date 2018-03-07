@@ -13,6 +13,8 @@ services:
       - UPLOAD_RATE=512
     networks:
       - torrents
+    stdin_open: true
+    tty: true
 
 networks:
   torrents:
