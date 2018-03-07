@@ -12,6 +12,7 @@ services:
       - "35623:35623/udp"
     networks:
       - urbackup
+    restart: unless-stopped
 
 networks:
   urbackup:
