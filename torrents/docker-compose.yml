@@ -3,7 +3,7 @@ services:
   torrentbox:
     image: kfei/docktorrent
     ports:
-      - "80:35080"
+      - "35080:80"
       - "45566:45566"
       - "9527:9527/udp"
     dns: 8.8.8.8
