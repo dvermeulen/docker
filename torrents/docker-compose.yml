@@ -1,0 +1,18 @@
+version: '3'
+services:
+  torrentbox:
+    image: kfei/docktorrent
+    ports:
+      - "80:35080"
+      - "45566:45566"
+      - "9527:9527/udp"
+    dns: 8.8.8.8
+    volumes:
+      - "/media/Torrents:/rtorrent"
+    environment:
+      - UPLOAD_RATE=512
+    networks:
+      - torrents
+
+networks:
+  torrents:
