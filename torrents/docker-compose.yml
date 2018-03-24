@@ -1,20 +1,11 @@
 version: '3'
 services:
   torrentbox:
-    image: kfei/docktorrent
-    ports:
-      - "35080:80"
-      - "45566:45566"
-      - "9527:9527/udp"
-    dns: 8.8.8.8
+    image: linuxserver/deluge
     volumes:
-      - "/media/Torrents:/rtorrent"
-    environment:
-      - UPLOAD_RATE=512
-    networks:
-      - torrents
-    stdin_open: true
-    tty: true
+      - "/media/Torrents:/downloads"
+      - "config:/config"
+    network_mode: "host"
 
-networks:
-  torrents:
+volumes:
+  config:
