@@ -1,11 +1,15 @@
 version: '3'
 services:
   torrentbox:
-    image: linuxserver/deluge
+    image: binhex/arch-deluge
+    ports:
+      - "8112:8112"
+      - "58846:58846"
+      - "58946:58946"
     volumes:
       - "/media/Torrents:/downloads"
       - "config:/config"
-    network_mode: "host"
+      - "/etc/localhost:/etc/localhost:ro"
 
 volumes:
   config:
