@@ -1,15 +1,12 @@
 version: '3'
 services:
   torrentbox:
-    image: binhex/arch-deluge
+    image: linuxserver/transmission
     ports:
-      - "8112:8112"
-      - "58846:58846"
-      - "58946:58946"
+      - "9091:9091"
+      - "51413:51413"
+      - "51413:51413/udp"
     volumes:
       - "/media/Torrents:/downloads"
-      - "config:/config"
-      - "/etc/localhost:/etc/localhost:ro"
-
-volumes:
-  config:
+      - "/media/Torrents/config:/config"
+      - "/media/Torrents/watch:/watch"
