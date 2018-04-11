@@ -1,0 +1,42 @@
+version: "3"
+
+services:
+  web:
+    image: 'gitlab/gitlab-ce:latest'
+    deploy:
+      replicas: 1
+    hostname: 'git.dezdez.com.au'
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+        external_url 'https://git.dezdez.com.au'
+        gitlab_rails['gitlab_shell_ssh_port'] = 50022
+    ports:
+      - '50080:80'
+      - '50443:443'
+      - '50022:22'
+    volumes:
+      - 'gitlab_config:/etc/gitlab'
+      - 'gitlab_logs:/var/log/gitlab'
+      - 'gitlab_data:/var/opt/gitlab'
+    networks:
+      - infrastructure
+
+volumes:
+  gitlab_config:
+    driver: local
+    driver_opts:
+      type: nfs
+      device: beef.localdomain:/GitlabConfig/
+  gitlab_logs:
+    driver: local
+    driver_opts:
+      type: nfs
+      device: beef.localdomain:/GitlabLogs/
+  gitlab_data:
+    driver: local
+    driver_opts:
+      type: nfs
+      device: beef.localdomain:/GitlabData/
+
+networks:
+  infrastructure:
