@@ -26,16 +26,19 @@ volumes:
     driver: local
     driver_opts:
       type: nfs
+      o: addr=beef.localdomain,rw
       device: beef.localdomain:/GitlabConfig/
   gitlab_logs:
     driver: local
     driver_opts:
       type: nfs
+      o: addr=beef.localdomain,rw
       device: beef.localdomain:/GitlabLogs/
   gitlab_data:
     driver: local
     driver_opts:
       type: nfs
+      o: addr=beef.localdomain,rw
       device: beef.localdomain:/GitlabData/
 
 networks:
